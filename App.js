@@ -13,12 +13,17 @@ dbconnection().then(()=>{
     
 })
 
-const corsOptions={
-    origin:"http://localhost:5173"
-}
+const corsOptions = {
+    origin: "http://localhost:5173"
+};
+
+
+// routers 
+const adminrouter=require("./router/adminRouter")
 
 
 // buffer format 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(cors(corsOptions))
+app.use("/admin",adminrouter)
