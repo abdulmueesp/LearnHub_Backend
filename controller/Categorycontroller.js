@@ -1,8 +1,24 @@
-
+const Categorydatamodel=require("../model/Admin/Categorydata")
 
 module.exports={
-    categoryPOST:(req,res)=>{
-        console.log(req.body);
-        
+
+    categoryGET:async(req,res)=>{
+        const data=await Categorydatamodel.find()
+        res.status(201).json({data:data})
+    },
+
+
+    categoryPOST:async(req,res)=>{
+        const existdata=await Categorydatamodel.findOne({categoryname:req.body.categoryname})
+
+        if(existdata){
+            return res.status(409).json({message:"category already exists!"})
+        }
+        const newcategory=new Categorydatamodel({
+            categoryname:req.body.categoryname
+        })
+           await newcategory.save();
+           const data=await Categorydatamodel.find();
+           res.status(201).json({message:"saved!",category:data})
     }
 }
