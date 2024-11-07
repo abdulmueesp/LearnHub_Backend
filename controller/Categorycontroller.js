@@ -20,5 +20,12 @@ module.exports={
            await newcategory.save();
            const data=await Categorydatamodel.find();
            res.status(201).json({message:"saved!",category:data})
-    }
+    },
+
+     categoryDELETE:async(req,res)=>{
+       const {id}=req.query
+        await Categorydatamodel.findByIdAndDelete(id)
+        const data=await Categorydatamodel.find() 
+        res.status(201).json({message:"deleted",data:data})
+     }
 }

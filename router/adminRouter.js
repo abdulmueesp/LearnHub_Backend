@@ -8,4 +8,5 @@ router.post("/login",admincontroller.LoginPOST)
 
 router.get("/categorylist",categorycontroller.categoryGET)
 router.post("/category",categorycontroller.categoryPOST)
+router.delete("/categorydlt",categorycontroller.categoryDELETE)
 module.exports=router
