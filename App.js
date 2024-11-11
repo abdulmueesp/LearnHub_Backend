@@ -19,7 +19,7 @@ const corsOptions = {
 
 
 // routers 
-const adminrouter=require("./router/adminRouter")
+const adminrouter=require("./router/AdminRouter")
 
 
 // buffer format 
